@@ -9,3 +9,5 @@ venv/
 *.log
 
 .vscode/
+
+CSV/
