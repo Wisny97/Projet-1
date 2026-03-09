@@ -16,7 +16,6 @@ def get_soup(url: str) -> BeautifulSoup:
     return BeautifulSoup(r.text, "html.parser")
 
 def safe_filename(name: str) -> str:
-    # remplace espaces par _, enlève caractères interdits
     name = name.strip().lower()
     name = re.sub(r"\s+", "_", name)
     name = re.sub(r"[^a-z0-9_\-]", "", name)
@@ -88,7 +87,6 @@ def product_description(soup):
     return p.text.strip() if p else ""
 
 def category_name_from_product_page(soup):
-    # breadcrumb: Home > Books > Category > Book
     breadcrumb = soup.find("ul", class_="breadcrumb")
     return breadcrumb.find_all("a")[2].text.strip()
 
